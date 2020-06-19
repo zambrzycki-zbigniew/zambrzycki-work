@@ -18,14 +18,15 @@
     .hello {
       font: {
         family: mat-font-family($config, body-1);
-        size: mat-font-size($config, body-1);
+        // size: mat-font-size($config, body-1);
         weight: mat-font-weight($config, body-1);
       }
     }
   }
 
   .hello {
-      padding: 10px;
+      padding: 1vmax;
+      font-size: calc(10px+1.4vmax + 1.4vmin);
       color: #00FD61;
       height: 20vh;
   }

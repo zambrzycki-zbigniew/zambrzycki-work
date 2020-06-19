@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef} from '@angular/core';
 import {
   trigger,
   state,
@@ -24,6 +24,8 @@ export class HelloComponent implements OnInit {
   );
   helloAfter: string[] = ["Hello World", "I'm Zbigniew Zambrzycki.","I'm full-sack web@@@@@@@@@-stack web developer."];
   helloText: Typer = new Typer(this.helloAfter, this.interval);
+  @ViewChild("hello") divView: ElementRef;
+
 
   constructor() { }
 
@@ -38,7 +40,7 @@ export class HelloComponent implements OnInit {
     this.helloText = new Typer(this.helloAfter, this.interval);
     this.helloText.type();
     var comp = this;
-    setTimeout(function () {comp.typingFinished.emit(true)}, this.interval.totalTime+2000)
+    setTimeout(function () {console.log(comp.divView.nativeElement.offsetWidth); comp.typingFinished.emit(true)}, this.interval.totalTime+2000)
     // var i=3000;
     // helloAfter.forEach(line => {
     //   line.split(' ').forEach((word, key, arr) => {
@@ -59,6 +61,7 @@ export class HelloComponent implements OnInit {
     // setTimeout(function () {comp.typingFinished.emit(true)}, i)
     // i=null;
     // contentChild is updated after the content has been checked
+    console.log(comp.divView.nativeElement.offsetWidth)
   }
 
 }
