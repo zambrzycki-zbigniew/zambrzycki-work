@@ -1,0 +1,63 @@
+@import '~@angular/material/theming';
+@mixin home-theme($theme) {
+    // Extract the palettes you need from the theme definition.
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $background: map-get($theme, background);
+    // $background: map-get($theme, background);
+  
+    // Define any styles affected by the theme.
+    .home {
+      // Use mat-color to extract individual colors from a palette.
+      background-color: mat-color($background, background);
+      border-color: mat-color($accent, A400);
+    }
+  }
+
+  @mixin home-typography($config) {
+    .home {
+      font: {
+        family: mat-font-family($config, body-1);
+        size: mat-font-size($config, body-1);
+        weight: mat-font-weight($config, body-1);
+      }
+    }
+  }
+
+  .home {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 10px;
+      color: black;
+      height: 80vh;
+  }
+  .home-text {
+    font-family: 'Caveat', cursive;
+    font-size: 60px;
+    margin: 20px;
+  }
+  .home-emoji {
+    // font-family: 'Caveat', cursive;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 60px;
+    margin: 20px;
+  }
+
+  .ambulance {      
+    animation: 1s ambBlink;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;    
+    visibility: hidden;
+    margin: 0;
+  }
+  
+@keyframes ambBlink {
+    50% {
+      visibility: hidden;
+    }
+    100% {
+      visibility: visible;
+    }
+}
