@@ -1,0 +1,50 @@
+@import '~@angular/material/theming';
+@mixin hello-theme($theme) {
+    // Extract the palettes you need from the theme definition.
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $background: map-get($theme, background);
+    // $background: map-get($theme, background);
+  
+    // Define any styles affected by the theme.
+    .hello {
+      // Use mat-color to extract individual colors from a palette.
+      background-color: mat-color($background, background);
+      border-color: mat-color($accent, A400);
+    }
+  }
+
+  @mixin hello-typography($config) {
+    .hello {
+      font: {
+        family: mat-font-family($config, body-1);
+        // size: mat-font-size($config, body-1);
+        weight: mat-font-weight($config, body-1);
+      }
+    }
+  }
+
+  .hello {
+      padding: 1vh;
+      line-height: calc(10px + 1vh + 1vw);
+      font-size: calc(10px + 1vh + 1vw);
+      color: #00FD61;
+      height: calc(40px + 4vh + 4vw + 2vh);
+  }
+
+  .ambulance {      
+    animation: 1s ambBlink;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;    
+    visibility: hidden;
+    margin: 0;
+  }
+  
+@keyframes ambBlink {
+    50% {
+      visibility: hidden;
+    }
+    100% {
+      visibility: visible;
+    }
+}

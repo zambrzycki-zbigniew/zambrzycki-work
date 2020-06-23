@@ -1,0 +1,14 @@
+@import '~@angular/material/theming';
+
+@mixin navbar-theme($theme) {
+    // Extract the palettes you need from the theme definition.
+    $accent: map-get($theme, accent);
+    $primary: map-get($theme, primary);
+
+    .navbar {
+        opacity: 0;
+        padding: 0;
+        border-bottom: 3px solid mat-color($accent, A400);
+        box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+    }
+  }

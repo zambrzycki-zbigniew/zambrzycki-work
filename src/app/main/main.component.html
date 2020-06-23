@@ -1,0 +1,8 @@
+<app-navbar class="navbar"
+[@nav_opacity]="nav_opacity"
+(@nav_opacity.done)="nav_opacityDone($event)"></app-navbar>
+<app-hello
+(typingFinished)="typingFinished($event)"
+[@console_hide]="console_hide"
+(@console_hide.done)="console_hideDone($event)"></app-hello>
+<app-home (hideConsole)="hideConsole($event)"></app-home>

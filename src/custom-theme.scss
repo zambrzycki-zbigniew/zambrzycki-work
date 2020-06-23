@@ -1,0 +1,47 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+@import 'app/hello/hello.component.scss';
+@import 'app/home/home.component.scss';
+@import 'app/main/main.component.scss';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$primary: mat-palette($mat-blue-grey);
+$accent: mat-palette($mat-amber, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$theme: mat-light-theme($primary, $accent, $warn);
+
+$background-color: #000000;
+$background: map-get($theme, background);
+$background: map_merge($background, (background: $background-color));
+$console-theme: map_merge($theme, (background: $background));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
+
+$console-config: mat-typography-config(
+  $font-family: 'consolas',
+  $body-1: mat-typography-level(30px, 40px, 500)
+);
+
+@include angular-material-theme($theme);
+@include hello-theme($console-theme);
+@include hello-typography($console-config);
+@include home-theme($console-theme);
+@include home-typography($console-config);
+@include navbar-theme($theme);
